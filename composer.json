@@ -1,0 +1,66 @@
+{
+    "name": "westacks/telebot-laravel",
+    "description": "Telebot adapter for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PunyFlash",
+            "email": "puny.flash@gmail.com",
+            "homepage": "https://github.com/PunyFlash"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^6.0 || ^7.0",
+        "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
+        "westacks/telebot": "^3.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^3.5 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
+        "phpunit/phpunit": "^8.0 || ^9.0 || ^10.0",
+        "rector/rector": "^0.17"
+    },
+    "autoload": {
+        "psr-4": {
+            "Westacks\\TeleBot\\Laravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WeStacks\\TeleBot\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "testdox": "phpunit --testdox"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WeStacks\\TeleBot\\Laravel\\Providers\\TeleBotServiceProvider"
+            ],
+            "aliases": {
+                "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBot"
+            }
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "archive": {
+        "exclude": [
+            "/.gitignore",
+            "/.gitattributes",
+            "/.github",
+            "/tests",
+            "/docs",
+            "/phpunit.xml.dist",
+            "/rector.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
