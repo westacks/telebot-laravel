@@ -9,7 +9,7 @@
 <a href="https://github.com/westacks/telebot-laravel/actions/workflows/main.yml"><img src="https://github.com/westacks/telebot-laravel/actions/workflows/main.yml/badge.svg" alt="PHPUnit"></a>
 </p>
 
-TeleBot is a PHP library for telegram bots development. This project is a Laravel adapter for TeleBot
+TeleBot is a PHP library for telegram bots development. This project is a Laravel adapter for [TeleBot](https://github.com/westacks/telebot)
 
 ## Documentation
 
