@@ -39,7 +39,7 @@ final class TelegramWebAppService
             ->transform(fn ($val, $key) => "$key=$val")
             ->join("\n");
 
-        $secret_key = hash_hmac('sha256', config("telebot.bots.$bot.token"), 'WebAppData', true);
+        $secret_key = hash_hmac('sha256', preg_replace("/\/test$/", '', config("telebot.bots.$bot.token")), 'WebAppData', true);
         $hash_hmac = bin2hex(hash_hmac('sha256', $data_check_string, $secret_key, true));
 
         return $hash === $hash_hmac;
