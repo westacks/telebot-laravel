@@ -36,7 +36,7 @@ class TeleBotServiceProvider extends ServiceProvider
             \WeStacks\TeleBot\Laravel\Artisan\CommandsCommand::class,
         ]);
 
-        $this->app->singleton(BotManager::class, fn () => new BotManager(config('telebot')));
+        $this->app->scoped(BotManager::class, fn () => new BotManager(config('telebot')));
         $this->app->alias(BotManager::class, 'telebot');
 
         Notification::resolved(fn (ChannelManager $service) =>
