@@ -81,7 +81,7 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
         return $signals;
     }
 
-    public function handleSignal(int $signal): void
+    public function handleSignal(int $signal, int|false $previousExitCode = 0): void
     {
         $this->warn('Shutting down Telegram polling...');
         $this->poll = false;
