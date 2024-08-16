@@ -10,11 +10,17 @@
             "homepage": "https://github.com/PunyFlash"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/legacy-ua/telebot"
+        }
+    ],
     "require": {
         "php": "^8.0",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-        "westacks/telebot": "^3.0"
+        "westacks/telebot": "dev-proxy"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
