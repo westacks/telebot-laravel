@@ -13,4 +13,5 @@ use WeStacks\TeleBot\Laravel\Middleware\AuthorizeWebAppRequest;
 Route::aliasMiddleware('telebot-webapp', AuthorizeWebAppRequest::class);
 
 Route::post('/telebot/webhook/{bot}/{token}', WebhookController::class)
+    ->middleware(config('telebot.middleware', []))
     ->name('telebot.webhook');
