@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "laravel/pint": "^1.0",
+        "nette/php-generator": "^4.1",
         "orchestra/testbench": "^7.0 || ^8.0 || ^9.0 || ^10.0",
         "pestphp/pest": "^3.0",
         "rector/rector": "^2.0"
@@ -28,12 +29,12 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "WeStacks\\TeleBot\\Laravel\\Generator\\": "generator/",
             "Tests\\": "tests/"
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "testdox": "phpunit --testdox"
+        "generate": "WeStacks\\TeleBot\\Laravel\\Generator\\Generator::generate"
     },
     "extra": {
         "laravel": {
@@ -58,6 +59,7 @@
             "/.gitattributes",
             "/.github",
             "/tests",
+            "/generator",
             "/docs",
             "/phpunit.xml.dist",
             "/rector.php"

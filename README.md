@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://github.com/westacks/telebot-laravel"><img src="./assets/logo.svg" alt="Project Logo"></a>
+<a href="https://github.com/westacks/telebot-laravel"><img src="./.github/assets/logo.svg" alt="Project Logo"></a>
 </p>
 
 <p align="center">
@@ -11,7 +11,21 @@
 
 TeleBot is a PHP library for telegram bots development. This project is a Laravel adapter for [TeleBot](https://github.com/westacks/telebot)
 
-## Documentation
+## Installation
+
+Install the package with composer:
+
+```bash
+composer require westacks/telebot-laravel
+```
+
+Push configuration to your `config/telebot.php` file:
+
+```bash
+php artisan vendor:publish --provider="WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider" --tag=config
+```
+
+## Farther steps
 
 Documentation for the library can be found on the [website](https://westacks.github.io/telebot/).
 
