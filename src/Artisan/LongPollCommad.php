@@ -18,11 +18,10 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
 
     public function handle()
     {
-        $bots = collect($this->botsList())->map(function ($key) {
-            return [$key => 0];
-        })->collapse()->toArray();
+        $bots = collect($this->botsList())->map(static fn ($key) => [$key => 0])->collapse()->toArray();
 
         $this->info('Polling telegram updates...');
+
         while ($this->poll) {
             foreach (array_keys($bots) as $bot) {
                 $this->handleUpdates($bot, $bots[$bot]);
@@ -38,15 +37,13 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
     private function handleUpdates(string $bot, int &$offset)
     {
         $updates = $this->bot->bot($bot)
-            ->async(false)
-            ->exceptions(true)
             ->getUpdates(array_merge(config("telebot.bots.{$bot}.poll", []), [
                 'offset' => $offset + 1,
             ]));
 
         foreach ($updates as $update) {
             $this->logUpdate($bot, $update);
-            $this->bot->bot($bot)->handleUpdate($update);
+            $this->bot->bot($bot)->handle($update);
             $offset = $update->update_id;
         }
     }

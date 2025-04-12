@@ -2,13 +2,19 @@
 
 namespace WeStacks\TeleBot\Tests\Helpers;
 
-use WeStacks\TeleBot\Handlers\CommandHandler;
+use WeStacks\TeleBot\Foundation\CommandHandler;
 
 class StartCommandHandler extends CommandHandler
 {
-    protected static $aliases = ['/start', '/s'];
+    protected static function aliases(): array
+    {
+        return ['/start', '/s'];
+    }
 
-    protected static $description = 'Send "/start" or "/s" to get "Hello, World!"';
+    protected static function description(?string $locale = null): string
+    {
+        return trans('Send "/start" or "/s" to get "Hello, World!"', locale: $locale);
+    }
 
     public function handle()
     {

@@ -34,10 +34,8 @@ return [
         'bot' => [
             'token' => env('TELEGRAM_BOT_TOKEN'),
             'name' => env('TELEGRAM_BOT_NAME', null),
-            'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org/bot{TOKEN}/{METHOD}'),
-            'exceptions' => true,
-            'async' => false,
-            'storage' => \WeStacks\TeleBot\Storage\JsonStorage::class,
+            'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org'),
+            'storage' => \WeStacks\TeleBot\Foundation\FileStorage::class,
             'http' => [
                 'http_errors' => false,
             ],
@@ -57,9 +55,7 @@ return [
                 // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
             ],
 
-            'handlers' => [
-                // Your update handlers
-            ],
+            'kernel' => \WeStacks\TeleBot\Kernel::class,
         ],
 
         // 'second_bot' => [

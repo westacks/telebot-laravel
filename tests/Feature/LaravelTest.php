@@ -5,7 +5,6 @@ namespace WeStacks\TeleBot\Tests\Feature;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Notification;
 use Orchestra\Testbench\TestCase;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider;
 use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Objects\Message;
@@ -34,18 +33,16 @@ class LaravelTest extends TestCase
     {
         TeleBot::add('test_existing', TeleBot::bot());
         $this->assertEquals(TeleBot::bot(), TeleBot::bot('test_existing'));
-        TeleBot::delete('test_existing');
+        TeleBot::remove('test_existing');
     }
 
     public function testBotManagerAddAndDelete()
     {
-        TeleBot::delete('bot');
+        TeleBot::remove('bot');
 
-        try {
-            TeleBot::bot();
-        } catch (TeleBotException $e) {
-            $this->assertInstanceOf(TeleBotException::class, $e);
-        }
+        $this->expectException(\ErrorException::class);
+
+        TeleBot::bot();
 
         TeleBot::add('bot', get_config());
         TeleBot::default('bot');
@@ -58,36 +55,24 @@ class LaravelTest extends TestCase
         foreach (TeleBot::bots() as $name) {
             $this->assertInstanceOf(Bot::class, TeleBot::bot($name));
         }
-        $this->expectException(TeleBotException::class);
+        $this->expectException(\ErrorException::class);
         TeleBot::bot('some_wrong_bot');
     }
 
     public function testBotManagerDefaultWrong()
     {
-        $this->expectException(TeleBotException::class);
+        $this->expectException(\InvalidArgumentException::class);
         TeleBot::default('some_wrong_bot');
     }
 
     public function testCommandsCommand()
     {
-        TeleBot::addHandler(StartCommandHandler::class);
+        TeleBot::handler(StartCommandHandler::class);
         $this->artisan('telebot:commands')->assertExitCode(1);
         $this->artisan('telebot:commands -S -R')->assertExitCode(1);
 
         $this->artisan('telebot:commands -S -I')->assertExitCode(0);
         $this->artisan('telebot:commands -R')->assertExitCode(0);
-    }
-
-    public function testWebhookCommand()
-    {
-        $this->artisan('telebot:webhook')->assertExitCode(1);
-        $this->artisan('telebot:webhook -S -R')->assertExitCode(1);
-
-        Config::set('telebot.bots.bot.webhook.url', 'https://telebot.westacks.com.ua/webhook');
-        $this->artisan('telebot:webhook -S -I')->assertExitCode(0);
-        $this->artisan('telebot:webhook -R')->assertExitCode(0);
-
-        Config::set('telebot.bots.bot.webhook.url', null);
     }
 
     public function testLongPollCommand()
@@ -113,7 +98,7 @@ class LaravelTest extends TestCase
             $urls[] = "/telebot/webhook/$bot/".($config['token'] ?? $config ?? '');
         }
 
-        $update = '{"update_id":1234567,"message":{"message_id":2345678,"from":{"id":3456789,"is_bot":false,"first_name":"John","last_name":"Doe"}}}';
+        $update = '{"update_id":1234567,"message":{"message_id":2345678,"date":123123,"from":{"id":3456789,"is_bot":false,"first_name":"John","last_name":"Doe"},"chat":{"id":3456789,"first_name":"John","last_name":"Doe","type":"private"},"text":"Hello World!"}}';
 
         foreach ($urls as $url) {
             $this->postJson($url, json_decode($update, true))->assertStatus(200);

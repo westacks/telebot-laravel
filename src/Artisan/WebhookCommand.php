@@ -58,9 +58,9 @@ class WebhookCommand extends TeleBotCommand
                 ]);
             }
 
+            $webhook['_promise'] = true;
+
             $promises[] = $this->bot->bot($bot)
-                ->async(true)
-                ->exceptions(true)
                 ->setWebhook($webhook)
                 ->then(function (bool $result) use ($bot) {
                     if ($result) {
@@ -78,9 +78,7 @@ class WebhookCommand extends TeleBotCommand
         $promises = [];
         foreach ($bots as $bot) {
             $promises[] = $this->bot->bot($bot)
-                ->async(true)
-                ->exceptions(true)
-                ->deleteWebhook()
+                ->deleteWebhook(_promise: true)
                 ->then(function (bool $result) use ($bot) {
                     if ($result) {
                         $this->info("Success! Webhook has been removed for '{$bot}' bot!");
@@ -99,9 +97,7 @@ class WebhookCommand extends TeleBotCommand
         $promises = [];
         foreach ($bots as $bot) {
             $promises[] = $this->bot->bot($bot)
-                ->async(true)
-                ->exceptions(true)
-                ->getWebhookInfo()
+                ->getWebhookInfo(_promise: true)
                 ->then(function (WebhookInfo $info) use ($bot) {
                     $this->makeTable($info, $bot);
 

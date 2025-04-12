@@ -10,6 +10,6 @@ class WebhookController extends Controller
 {
     public function __invoke(UpdateRequest $request)
     {
-        TeleBot::bot($request->route('bot'))->handleUpdate($request->update());
+        TeleBot::bot($request->route('bot'))->handle($request->update());
     }
 }

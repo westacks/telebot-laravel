@@ -13,7 +13,7 @@ class AuthorizeWebAppRequest
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, \Closure $next, string $bot = null): Response
+    public function handle(Request $request, \Closure $next, ?string $bot = null): Response
     {
         abort_unless(
             (new TelegramWebAppService($request))->validCredentials($bot ?? config('telebot.default')),

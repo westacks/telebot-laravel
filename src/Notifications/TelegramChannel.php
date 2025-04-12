@@ -37,7 +37,9 @@ class TelegramChannel
         $errors = [];
 
         foreach (($data['actions'] ?? []) as $action) {
-            $promises[] = $bot->async()->exceptions()
+            $action['arguments']['_promise'] = true;
+
+            $promises[] = $bot
                 ->{$action['method']}($action['arguments'])
                 ->otherwise(function (Exception $exception) use (&$errors) {
                     $errors[] = $exception;

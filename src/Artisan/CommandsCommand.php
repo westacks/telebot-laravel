@@ -73,9 +73,7 @@ class CommandsCommand extends TeleBotCommand
         $promises = [];
         foreach ($bots as $bot) {
             $promises[] = $this->bot->bot($bot)
-                ->async()
-                ->exceptions()
-                ->getMyCommands()
+                ->getMyCommands(_promise: true)
                 ->then(function (array $commands) use ($bot) {
                     $this->makeTable($commands, $bot);
 

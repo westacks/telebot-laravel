@@ -3,8 +3,7 @@
 namespace WeStacks\TeleBot\Laravel\Notifications;
 
 use JsonSerializable;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
-use WeStacks\TeleBot\Traits\HasTelegramMethods;
+use WeStacks\TeleBot\Foundation\HasTelegramMethods;
 
 /**
  * This class represents a bot instance. This is basically main controller for sending and handling your Telegram requests.
@@ -139,7 +138,7 @@ class TelegramNotification implements JsonSerializable, \Stringable
     public function __call(string $method, array $arguments)
     {
         if (! static::method($method)) {
-            throw new TeleBotException('Method "'.$method.'" does not exist.');
+            throw new \BadMethodCallException('Method "'.$method.'" does not exist.');
         }
 
         $this->data['actions'][] = [
