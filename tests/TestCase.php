@@ -8,12 +8,12 @@ use WeStacks\TeleBot\Laravel\TeleBot;
 
 abstract class TestCase extends BaseTestCase
 {
-    function getPackageProviders($app)
+    public function getPackageProviders($app)
     {
         return [TeleBotServiceProvider::class];
     }
 
-    function getPackageAliases($app)
+    public function getPackageAliases($app)
     {
         return [
             'TeleBot' => TeleBot::class,

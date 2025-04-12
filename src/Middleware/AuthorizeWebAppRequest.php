@@ -17,7 +17,8 @@ class AuthorizeWebAppRequest
     {
         abort_unless(
             (new TelegramWebAppService($request))->validCredentials($bot ?? config('telebot.default')),
-            403, trans('Invalid credentials')
+            403,
+            trans('Invalid credentials')
         );
 
         return $next($request);

@@ -132,7 +132,7 @@ class TelegramNotification implements JsonSerializable, \Stringable
 
     public static function __callStatic(string $name, array $arguments)
     {
-        return (new static)->$name(...$arguments);
+        return (new static())->$name(...$arguments);
     }
 
     public function __call(string $method, array $arguments)

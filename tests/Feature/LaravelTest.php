@@ -1,14 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Notification;
-use WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider;
 use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot as Bot;
 use Tests\Helpers\StartCommandHandler;
 use Tests\Helpers\TelegramNotification;
 use Tests\Helpers\TestNotifiable;
-
 
 function getEnvironmentSetUp($app)
 {
@@ -69,11 +67,11 @@ test('long poll command', function () {
 });
 
 test('notification', function () {
-    $to = new TestNotifiable;
-    Notification::send($to, new TelegramNotification);
+    $to = new TestNotifiable();
+    Notification::send($to, new TelegramNotification());
 
     Notification::fake();
-    Notification::send($to, new TelegramNotification);
+    Notification::send($to, new TelegramNotification());
     Notification::assertSentTo($to, TelegramNotification::class);
 });
 
@@ -92,4 +90,3 @@ test('webhook route', function () {
 
     $this->postJson('/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')->assertStatus(403);
 });
-

@@ -39,11 +39,14 @@ class TeleBotServiceProvider extends ServiceProvider
         $this->app->scoped(BotManager::class, fn () => new BotManager(config('telebot.bots', []), config('telebot.default')));
         $this->app->alias(BotManager::class, 'telebot');
 
-        Notification::resolved(fn (ChannelManager $service) =>
+        Notification::resolved(
+            fn (ChannelManager $service) =>
             $service->extend('telegram', fn ($app) => $app->make(TelegramChannel::class))
         );
 
-        Request::macro('telegramWebAppUser', fn (?string $key = null, $default = null) =>
+        Request::macro(
+            'telegramWebAppUser',
+            fn (?string $key = null, $default = null) =>
             Arr::get(app(TelegramWebAppService::class)->user(), $key, $default)
         );
     }
