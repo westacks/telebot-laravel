@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://github.com/westacks/telebot-laravel"><img src="./.github/assets/logo.svg" alt="Project Logo"></a>
+<a href="https://github.com/westacks/telebot-laravel"><img src="./.github/assets/logo.svg" alt="Project Logo" width="200"></a>
 </p>
 
 <p align="center">
