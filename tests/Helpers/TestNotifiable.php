@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot\Tests\Helpers;
+namespace Tests\Helpers;
 
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notifiable;

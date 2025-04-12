@@ -11,15 +11,14 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "guzzlehttp/guzzle": "^6.0 || ^7.0",
+        "php": "^8.2",
         "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0",
         "westacks/telebot": "^4.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
         "orchestra/testbench": "^3.5 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
-        "phpunit/phpunit": "^8.0 || ^9.0 || ^10.0",
+        "pestphp/pest": "^3.0",
         "rector/rector": "^0.17"
     },
     "autoload": {
@@ -29,7 +28,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "WeStacks\\TeleBot\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -48,7 +47,10 @@
     },
     "config": {
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "archive": {
         "exclude": [
