@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/westacks/telebot-laravel"><img src="https://poser.pugx.org/westacks/telebot-laravel/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/westacks/telebot-laravel"><img src="https://poser.pugx.org/westacks/telebot-laravel/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/westacks/telebot-laravel"><img src="https://poser.pugx.org/westacks/telebot-laravel/license.svg" alt="License"></a>
-<a href="https://github.com/westacks/telebot-laravel/actions/workflows/main.yml"><img src="https://github.com/westacks/telebot-laravel/actions/workflows/main.yml/badge.svg" alt="PHPUnit"></a>
+<a href="https://github.com/westacks/telebot-laravel/actions/workflows/main.yml"><img src="https://github.com/westacks/telebot-laravel/actions/workflows/tests.yml/badge.svg" alt="Pest"></a>
 </p>
 
 TeleBot is a PHP library for telegram bots development. This project is a Laravel adapter for [TeleBot](https://github.com/westacks/telebot)
