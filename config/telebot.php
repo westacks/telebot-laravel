@@ -18,6 +18,7 @@ return [
     |
     |
     */
+
     'middleware' => [],
 
     /*-------------------------------------------------------------------------
@@ -62,4 +63,13 @@ return [
         //     'token'         => env('TELEGRAM_BOT2_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
         // ],
     ],
+
+    /*-------------------------------------------------------------------------
+    | Base Namespace for bot classes
+    |--------------------------------------------------------------------------
+    | You may change the default namespace for your bot classes.
+    | Follows this template: `<AppRoot>\<Namespace>`
+    */
+
+    'namespace' => "Telegram",
 ];

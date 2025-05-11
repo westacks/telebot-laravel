@@ -34,6 +34,11 @@ class TeleBotServiceProvider extends ServiceProvider
             \WeStacks\TeleBot\Laravel\Artisan\WebhookCommand::class,
             \WeStacks\TeleBot\Laravel\Artisan\LongPollCommad::class,
             \WeStacks\TeleBot\Laravel\Artisan\CommandsCommand::class,
+            \WeStacks\TeleBot\Laravel\Artisan\InstallCommand::class,
+            \WeStacks\TeleBot\Laravel\Artisan\MakeKernelCommand::class,
+            \WeStacks\TeleBot\Laravel\Artisan\MakeCommandHandlerCommand::class,
+            \WeStacks\TeleBot\Laravel\Artisan\MakeCallbackHandlerCommand::class,
+            \WeStacks\TeleBot\Laravel\Artisan\MakeRequestInputHandlerCommand::class,
         ]);
 
         $this->app->scoped(BotManager::class, fn () => new BotManager(config('telebot.bots', []), config('telebot.default')));

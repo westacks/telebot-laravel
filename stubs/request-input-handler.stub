@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use WeStacks\TeleBot\Foundation\RequestInputHandler;
+
+class {{ class }} extends RequestInputHandler
+{
+    public function handle()
+    {
+        $this->accept();
+    }
+}

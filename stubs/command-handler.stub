@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+use WeStacks\TeleBot\Foundation\CommandHandler;
+
+class {{ class }} extends CommandHandler
+{
+    protected static function aliases(): array
+    {
+        return [{{ alias }}];
+    }
+
+    protected static function description(?string $locale = null): string
+    {
+        return trans('Command description', locale: $locale);
+    }
+
+    public function handle()
+    {
+        //
+    }
+}

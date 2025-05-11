@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use WeStacks\TeleBot\Foundation\CallbackHandler;
+
+class {{ class }} extends CallbackHandler
+{
+    protected string $match = "/^$/";
+
+    public function handle()
+    {
+        //
+    }
+}

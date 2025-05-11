@@ -21,10 +21,10 @@ Install the package with composer:
 composer require westacks/telebot-laravel
 ```
 
-Push configuration to your `config/telebot.php` file:
+Complete setup with the following command:
 
 ```bash
-php artisan vendor:publish --provider="WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider" --tag=config
+php artisan telebot:install
 ```
 
 ## Farther steps
@@ -41,6 +41,17 @@ Library provides a Facade, artisan commands and notification channel to simplify
 ```php
 TeleBot::getMe();
 TeleBot::bot('bot2')->getMe();
+```
+
+##### Creating update handlers
+
+You can create different types of update handlers or bot kernel with the following command:
+```bash
+$ php artisan make:telebot:kernel
+$ php artisan make:telebot:update-handler
+$ php artisan make:telebot:command-handler
+$ php artisan make:telebot:callback-handler
+$ php artisan make:telebot:input-handler
 ```
 
 ##### Automatic webhook generation

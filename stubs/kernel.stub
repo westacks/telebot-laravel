@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use WeStacks\TeleBot\Kernel;
+
+class {{ class }} extends Kernel
+{
+    public function __construct()
+    {
+        parent::__construct([
+            //
+        ]);
+    }
+}

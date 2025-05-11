@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+use WeStacks\TeleBot\Foundation\UpdateHandler;
+
+class {{ class }} extends UpdateHandler
+{
+    public function trigger(): bool
+    {
+        return true;
+    }
+
+    public function handle()
+    {
+        //
+    }
+}
