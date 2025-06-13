@@ -15,7 +15,8 @@ class AuthorizeWebAppRequest
      */
     public function handle(Request $request, \Closure $next, ?string $bot = null): Response
     {
-        if (! $request->headers->has('Referer')) {
+        // Allow when empty or same referer
+        if ($request->header('Referer', $request->url()) === $request->url()) {
             return $next($request);
         }
 
