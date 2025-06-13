@@ -15,6 +15,10 @@ class AuthorizeWebAppRequest
      */
     public function handle(Request $request, \Closure $next, ?string $bot = null): Response
     {
+        if (! $request->headers->has('Referer')) {
+            return $next($request);
+        }
+
         abort_unless(
             (new TelegramWebAppService($request))->validCredentials($bot ?? config('telebot.default')),
             403,
