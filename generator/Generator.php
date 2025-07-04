@@ -10,7 +10,7 @@ class Generator
 {
     public static function generate(): int
     {
-        $api = json_decode(file_get_contents('https://raw.githubusercontent.com/westacks/telebot/refs/heads/main/api.json'), true);
+        $api = json_decode(file_get_contents(__DIR__.'/../vendor/westacks/telebot/api.json'), true);
 
         self::updateTelegramNotificationDocs($api['methods']);
         self::updateFacadeDocs($api['methods']);
