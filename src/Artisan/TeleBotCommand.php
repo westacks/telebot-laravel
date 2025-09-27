@@ -40,6 +40,6 @@ abstract class TeleBotCommand extends Command
      */
     protected function botsList()
     {
-        return $this->hasOption('all') ? $this->bot->bots() : [$this->argument('bot') ?? config('telebot.default')];
+        return $this->option('all') ? $this->bot->bots() : [$this->argument('bot') ?? config('telebot.default')];
     }
 }
