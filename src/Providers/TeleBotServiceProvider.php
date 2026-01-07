@@ -36,6 +36,7 @@ class TeleBotServiceProvider extends ServiceProvider
             \WeStacks\TeleBot\Laravel\Artisan\CommandsCommand::class,
             \WeStacks\TeleBot\Laravel\Artisan\InstallCommand::class,
             \WeStacks\TeleBot\Laravel\Artisan\MakeKernelCommand::class,
+            \WeStacks\TeleBot\Laravel\Artisan\MakeUpdateHandlerCommand::class,
             \WeStacks\TeleBot\Laravel\Artisan\MakeCommandHandlerCommand::class,
             \WeStacks\TeleBot\Laravel\Artisan\MakeCallbackHandlerCommand::class,
             \WeStacks\TeleBot\Laravel\Artisan\MakeRequestInputHandlerCommand::class,
