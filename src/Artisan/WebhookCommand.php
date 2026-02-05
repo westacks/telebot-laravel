@@ -112,7 +112,8 @@ class WebhookCommand extends TeleBotCommand
         $rows = collect($info->toArray())->map(function ($value, $key) {
             $key = Str::title(str_replace('_', ' ', $key));
             $value = is_bool($value) ? ($value ? 'Yes' : 'No') : $value;
-
+            $value = is_array($value) ? implode(',', $value) : $value;
+            
             return compact('key', 'value');
         })->toArray();
 
