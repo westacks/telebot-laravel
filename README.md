@@ -37,6 +37,14 @@ Documentation for the library can be found on the [website](https://westacks.git
 
 Library provides a Facade, artisan commands and notification channel to simplify the development process of your bot, if you are using Laravel:
 
+##### Laravel Boost Skill
+
+This package ships with a Laravel Boost skill. Install it via:
+
+```bash
+php artisan boost:add-skill westacks/telebot-laravel
+```
+
 ##### Facade
 ```php
 TeleBot::getMe();
