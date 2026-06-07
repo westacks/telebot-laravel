@@ -13,13 +13,15 @@ return [
     'default' => 'bot',
 
     /*-------------------------------------------------------------------------
-    | Middleware to be applied to the webhook route
+    | Webhook configuration for all bots
     |--------------------------------------------------------------------------
     |
     |
     */
-
-    'middleware' => [],
+    'webhook' => [
+        'enabled' => true,
+        'middleware' => [],
+    ],
 
     /*-------------------------------------------------------------------------
     | Your Telegram Bots

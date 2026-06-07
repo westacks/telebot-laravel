@@ -16,8 +16,11 @@ class TeleBotServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/../../views', 'telebot');
-        $this->loadRoutesFrom(__DIR__.'/../../routes/telebot.php');
         $this->mergeConfigFrom(__DIR__.'/../../config/telebot.php', 'telebot');
+
+        if (config('telebot.webhook.enabled')) {
+            $this->loadRoutesFrom(__DIR__.'/../../routes/telebot.php');
+        }
 
         $this->publishes([
             __DIR__.'/../../config/telebot.php' => $this->app->configPath('telebot.php'),
