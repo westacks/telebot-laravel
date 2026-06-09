@@ -43,7 +43,7 @@ class Handler extends AbstractProcessingHandler
     {
         $level = Logger::toMonologLevel($config['level']);
 
-        parent::__construct($level, true);
+        parent::__construct($level);
 
         // define variables for making Telegram request
         $this->bot = app('telebot')->bot($config['bot'] ?? null);
