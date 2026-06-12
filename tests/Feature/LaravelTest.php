@@ -44,7 +44,7 @@ test('bot manager bots', function () {
     foreach (TeleBot::bots() as $name) {
         expect(TeleBot::bot($name))->toBeInstanceOf(Bot::class);
     }
-    $this->expectException(\ErrorException::class);
+    $this->expectException(\InvalidArgumentException::class);
     TeleBot::bot('some_wrong_bot');
 });
 
