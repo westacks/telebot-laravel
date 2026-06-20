@@ -4,8 +4,10 @@ namespace WeStacks\TeleBot\Laravel;
 
 use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\BotManager;
+use WeStacks\TeleBot\Objects\AcceptedGiftTypes;
 use WeStacks\TeleBot\Objects\BotAccessSettings;
 use WeStacks\TeleBot\Objects\BotCommand;
+use WeStacks\TeleBot\Objects\BotCommandScope;
 use WeStacks\TeleBot\Objects\BotDescription;
 use WeStacks\TeleBot\Objects\BotName;
 use WeStacks\TeleBot\Objects\BotShortDescription;
@@ -14,25 +16,51 @@ use WeStacks\TeleBot\Objects\ChatAdministratorRights;
 use WeStacks\TeleBot\Objects\ChatFullInfo;
 use WeStacks\TeleBot\Objects\ChatInviteLink;
 use WeStacks\TeleBot\Objects\ChatMember;
+use WeStacks\TeleBot\Objects\ChatPermissions;
 use WeStacks\TeleBot\Objects\File;
+use WeStacks\TeleBot\Objects\ForceReply;
 use WeStacks\TeleBot\Objects\ForumTopic;
 use WeStacks\TeleBot\Objects\GameHighScore;
+use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\InlineQueryResult;
+use WeStacks\TeleBot\Objects\InlineQueryResultsButton;
+use WeStacks\TeleBot\Objects\InputChecklist;
+use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\InputMedia;
+use WeStacks\TeleBot\Objects\InputPaidMedia;
+use WeStacks\TeleBot\Objects\InputPollMedia;
+use WeStacks\TeleBot\Objects\InputPollOption;
+use WeStacks\TeleBot\Objects\InputProfilePhoto;
+use WeStacks\TeleBot\Objects\InputRichMessage;
+use WeStacks\TeleBot\Objects\InputSticker;
+use WeStacks\TeleBot\Objects\InputStoryContent;
+use WeStacks\TeleBot\Objects\KeyboardButton;
+use WeStacks\TeleBot\Objects\LabeledPrice;
+use WeStacks\TeleBot\Objects\LinkPreviewOptions;
+use WeStacks\TeleBot\Objects\MaskPosition;
 use WeStacks\TeleBot\Objects\MenuButton;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Objects\MessageEntity;
 use WeStacks\TeleBot\Objects\MessageId;
+use WeStacks\TeleBot\Objects\PassportElementError;
 use WeStacks\TeleBot\Objects\Poll;
 use WeStacks\TeleBot\Objects\PreparedInlineMessage;
 use WeStacks\TeleBot\Objects\PreparedKeyboardButton;
+use WeStacks\TeleBot\Objects\ReactionType;
 use WeStacks\TeleBot\Objects\ReplyKeyboardMarkup;
 use WeStacks\TeleBot\Objects\ReplyKeyboardRemove;
+use WeStacks\TeleBot\Objects\ReplyParameters;
 use WeStacks\TeleBot\Objects\SentGuestMessage;
 use WeStacks\TeleBot\Objects\SentWebAppMessage;
+use WeStacks\TeleBot\Objects\ShippingOption;
 use WeStacks\TeleBot\Objects\StarAmount;
 use WeStacks\TeleBot\Objects\StarTransactions;
 use WeStacks\TeleBot\Objects\Stars;
 use WeStacks\TeleBot\Objects\Sticker;
 use WeStacks\TeleBot\Objects\StickerSet;
 use WeStacks\TeleBot\Objects\Story;
+use WeStacks\TeleBot\Objects\StoryArea;
+use WeStacks\TeleBot\Objects\SuggestedPostParameters;
 use WeStacks\TeleBot\Objects\Telegram;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
@@ -859,7 +887,7 @@ use WeStacks\TeleBot\TeleBot as CoreTeleBot;
  * - _string_ `$result` __Required: Yes__. Result of the query. Must be either “approve” to allow the user to join the chat, “decline” to disallow the user to join the chat, or “queue” to leave the decision to other administrators.
  *
  *
- * @method static PromiseInterface|true sendChatJoinRequestWebApp(...$parameters) Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success.
+ * @method static PromiseInterface|true sendChatJoinRequestWebApp(...$parameters) Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based on the user interaction with the Mini App. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp}
  *
@@ -1965,7 +1993,7 @@ use WeStacks\TeleBot\TeleBot as CoreTeleBot;
  * {@see https://core.telegram.org/bots/api#sendrichmessage}
  *
  * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent. Bot can send rich messages on behalf of a business account only if the corresponding user can send rich messages.
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
