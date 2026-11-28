@@ -21,11 +21,11 @@ class Generator
     protected static function updateFacadeDocs(array $methods)
     {
         $namespace = new PhpNamespace('WeStacks\\TeleBot\\Laravel');
-        $class = ClassType::from("WeStacks\\TeleBot\\Laravel\\TeleBot", true);
+        $class = ClassType::from(\WeStacks\TeleBot\Laravel\TeleBot::class, true);
 
-        $namespace->addUse('WeStacks\\TeleBot\\BotManager');
-        $namespace->addUse('WeStacks\\TeleBot\\TeleBot', 'CoreTeleBot');
-        $namespace->addUse('GuzzleHttp\\Promise\\PromiseInterface');
+        $namespace->addUse(\WeStacks\TeleBot\BotManager::class);
+        $namespace->addUse(\WeStacks\TeleBot\TeleBot::class, 'CoreTeleBot');
+        $namespace->addUse(\GuzzleHttp\Promise\PromiseInterface::class);
 
         $class->removeComment();
 
@@ -76,7 +76,7 @@ class Generator
     protected static function updateTelegramNotificationDocs(array $methods)
     {
         $namespace = new PhpNamespace('WeStacks\\TeleBot\\Laravel\\Notifications');
-        $class = ClassType::from("WeStacks\\TeleBot\\Laravel\\Notifications\\TelegramNotification", true);
+        $class = ClassType::from(\WeStacks\TeleBot\Laravel\Notifications\TelegramNotification::class, true);
 
         $class->removeComment();
 

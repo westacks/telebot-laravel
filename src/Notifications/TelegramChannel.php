@@ -15,7 +15,7 @@ class TelegramChannel
 {
     public function __construct(
         protected BotManager $botmanager,
-        private Dispatcher $dispatcher,
+        private readonly Dispatcher $dispatcher,
     ) {
     }
 

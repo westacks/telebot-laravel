@@ -51,12 +51,10 @@ class WebhookCommand extends TeleBotCommand
             $webhook = $config['webhook'] ?? [];
             $token = $config['token'] ?? $config ?? null;
 
-            if (! isset($webhook['url'])) {
-                $webhook['url'] = route('telebot.webhook', [
-                    'bot' => $bot,
-                    'token' => $token,
-                ]);
-            }
+            $webhook['url'] ??= route('telebot.webhook', [
+                'bot' => $bot,
+                'token' => $token,
+            ]);
 
             $webhook['_promise'] = true;
 
